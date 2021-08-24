@@ -1,5 +1,7 @@
 package com.coomeva.sprboot.controllers;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,12 @@ public class PersonaController {
 		this.personaService.save(persona);
 		//return null;
 		return new RestResponse(HttpStatus.OK.value(), "Operacion exitosa");
+	}
+	
+	@RequestMapping(value = "/getPersonas", method = RequestMethod.GET)
+	//public QueryResult getUsers() {
+	public List<Persona> getUsers() {
+		return this.personaService.findAll();
 	}
 	
 	private boolean validate(Persona persona) {
