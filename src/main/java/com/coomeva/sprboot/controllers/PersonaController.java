@@ -41,8 +41,19 @@ public class PersonaController {
 	
 	@RequestMapping(value = "/getPersonas", method = RequestMethod.GET)
 	//public QueryResult getUsers() {
-	public List<Persona> getUsers() {
+	public List<Persona> getPersonas() {
 		return this.personaService.findAll();
+	}
+	
+	@RequestMapping(value = "/deletePersona", method = RequestMethod.POST)
+	public void deletePersona(@RequestBody String personaJson) throws Exception {
+		this.mapper = new ObjectMapper();
+		Persona persona = this.mapper.readValue(personaJson, Persona.class);
+		
+		if(persona.getCodigo() <= 0) {
+			throw new Exception("El codigo esta nulo");
+		}
+		this.personaService.deletePersona(persona.getCodigo());
 	}
 	
 	private boolean validate(Persona persona) {

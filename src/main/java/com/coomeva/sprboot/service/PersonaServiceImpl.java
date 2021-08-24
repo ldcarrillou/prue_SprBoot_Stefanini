@@ -22,4 +22,9 @@ public class PersonaServiceImpl implements IPersonaService {
 		//return null;
 		return this.personaRepository.findAll();
 	}
+	@Override
+	public void deletePersona(int codigo) {
+		this.personaRepository.deleteById((long) codigo);
+		
+	}
 }

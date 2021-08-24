@@ -20,4 +20,11 @@ public interface IPersonaService {
 	 */
 	List<Persona> findAll();
 
+	/**
+	 * Elimina una persona con el codigo recibido
+	 * 
+	 * @param codigo
+	 */
+	void deletePersona(int codigo);
+
 }
